@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+
+  </head>
   <body>
     
     <script>
+      // ----------
+      // Convert human age to dog age
+
       const myAge = 25;
       const humanDogRatio = 1/7;
       
@@ -12,13 +17,46 @@
       console.log(myDogAge)
 
       // ----------
+      // Create variable, bonusPoints. Initialize at 50
+      // Increase to 100. Decrease to 25. Increase to 70
+      // Console.log the value after each step
 
       let bonusPoints = 50;
-      bonusPoints += 50;
-      bonusPoints -= 75;
-      bonusPoints += 45;
 
+      bonusPoints += 50;
       console.log(bonusPoints)
+
+      bonusPoints -= 75;
+      console.log(bonusPoints)
+
+      bonusPoints += 45;
+      console.log(bonusPoints)
+
+      // ----------
+      // Create a countdown function
+      function countdown() {
+        console.log(5)
+        console.log(4)
+        console.log(3)
+        console.log(2)
+        console.log(1)
+      }
+
+      countdown()
+
+      // ----------
+      // Create a function that increments lapsCompleted var by 1
+      // Run it three times
+
+      let lapsCompleted = 0;
+      function lapsIncrement() {
+        return lapsCompleted += 1;
+      }
+      lapsIncrement()
+      lapsIncrement()
+      lapsIncrement()
+
+      console.log(lapsCompleted)
     </script>
   </body>
 </html>
