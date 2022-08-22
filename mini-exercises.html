@@ -65,6 +65,44 @@
 
       let myGreeting = greeting + " " + name
       console.log(myGreeting)
+
+      // ----------
+      // firstName + lastName = fullName
+      let firstName = "Code"
+      let lastName = "Zeen"
+      let fullName = firstName + " " + lastName
+      console.log(fullName)
+
+      // ----------
+      // Create a function that logs "Hi there, Linda!"
+
+      let nameLinda = "Linda"
+      let greetingLinda = "Hi there"
+
+      function greetLinda() {
+        let greeting = greetingLinda + ", " + nameLinda + "!"
+        console.log(greeting)
+      }
+      greetLinda()
+
+      // ----------
+      // Create two functions, and add/remove points to get 10
+      let myPoints = 3
+
+      function add3Points() {
+        myPoints += 3
+      }
+      function remove1Point() {
+        myPoints -= 1
+      }
+
+      add3Points()
+      add3Points()
+      add3Points()
+      remove1Point()
+      remove1Point()
+
+      console.log(myPoints)
     </script>
   </body>
 </html>
