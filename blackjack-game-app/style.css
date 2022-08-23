@@ -30,6 +30,7 @@ button,
 button:active {
   width: 320px;
   height: 48px;
+  margin-bottom: 12px;
   background: goldenrod;
   color: #016f32;
   box-shadow: none;
