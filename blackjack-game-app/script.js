@@ -7,7 +7,14 @@ let message = ""
 let messageEl = document.getElementById("message-el")
 let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
-let startBtn = document.getElementById("start-btn")
+let playerEl = document.getElementById("player-el")
+
+let player = {
+  name: "Codezeen",
+  chips: 145
+}
+
+playerEl.textContent = player.name + ": $" + player.chips
 
 function getRandomCard() {
   let randomCard = Math.floor(Math.random()*13) + 1
@@ -25,11 +32,8 @@ function startGame() {
   isAlive = true
   let firstCard = getRandomCard()
   let secondCard = getRandomCard()
-  cards.push(firstCard, secondCard)
-
-  for (let i = 0; i < cards.length; i++) {
-    sum += cards[i]
-  }
+  cards = [firstCard, secondCard]
+  sum = firstCard + secondCard
   renderGame()
 }
 
@@ -54,13 +58,16 @@ function renderGame() {
   sumEl.textContent = "Sum: " + sum
 }
 
-
-
 function newCard() {
-  console.log("drawing new card")
-  let newCard = getRandomCard()
-  cards.push(newCard)
-  sum += newCard
-  renderGame()
+  if (isAlive === true && hasBlackJack === false) {
+    console.log("Drawing new card...")
+    let newCard = getRandomCard()
+    cards.push(newCard)
+    sum += newCard
+    renderGame()
+  } else {
+    console.log("Please restart the game")
+  }
+  
 } 
 
