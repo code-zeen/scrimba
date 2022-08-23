@@ -1,0 +1,13 @@
+body {
+  width: 800px;
+  margin: auto;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border: 1px solid #000;
+  text-align: center;
+}
+h1 {
+  color: goldenrod;
+}
+#message-el {
+
+}
