@@ -1,7 +1,11 @@
 let playerCards = []
+let playerSuits = []
 let playerSum = 0
 let dealerCards = []
+let dealerSuits = []
 let dealerSum = 0
+
+let fullSuit = ["♣️", "♦️", "♥️", "♠️"]
 let hasBlackJack = false
 let isAlive = false
 let choseStay = false
@@ -19,26 +23,22 @@ let playerEl = document.getElementById("player-el")
 function displayPlayerSum() {
   playerSumEl.textContent = "Total: " + playerSum
 }
-
 function displayPlayerChips() {
   playerEl.textContent = player.name + ": $ " + player.chips
 }
-
 function displayDealerSum() {
   dealerSumEl.textContent = "Total: " + dealerSum
 }
-
 function winChips() {
   player.chips += 10
 }
-
 function loseChips() {
   player.chips -= 10
 }
 
 // player profile
 let player = {
-  name: "John Doe",
+  name: "PogChamp",
   chips: 150
 }
 
@@ -65,6 +65,11 @@ function getRandomCard() {
     return randomCard
   }
 }
+// generate a random card suit emoji
+function getRandomSuit() {
+  let randomNumber = Math.floor(Math.random() * 4)
+  return fullSuit[randomNumber]
+}
 
 // start / continue
 function startGame() {
@@ -83,15 +88,23 @@ function startGame() {
       let playerSecondCard = getRandomCard()
       playerCards = [playerFirstCard, playerSecondCard]
       playerSum = playerFirstCard + playerSecondCard
+
+      let playerFirstSuit = getRandomSuit()
+      let playerSecondSuit = getRandomSuit()
+      playerSuits = [playerFirstSuit, playerSecondSuit]
       // initialize dealer
       let dealerFirstCard = getRandomCard()
       dealerCards = [dealerFirstCard]
       dealerSum = dealerFirstCard
-      dealerCardsEl.textContent = "Dealer: " + dealerFirstCard + " "
+
+      let dealerFirstSuit = getRandomSuit()
+      dealerSuits = [dealerFirstSuit]
+
+      dealerCardsEl.textContent = "Dealer: " + dealerFirstCard + dealerFirstSuit + " "
 
       // initial blackjack
       if (playerSum === 21) {
-        playerCardsEl.textContent += playerFirstCard + " " + playerSecondCard
+        playerCardsEl.textContent += playerFirstCard + playerFirstSuit + " " + playerSecondCard + playerSecondSuit
         messageEl.textContent = "BLACKJACK!!"
         displayPlayerSum()
         winChips()
@@ -114,7 +127,7 @@ function startGame() {
 function renderGame() {
   playerCardsEl.textContent = "Player: "
   for (let i = 0; i < playerCards.length; i++) {
-    playerCardsEl.textContent += playerCards[i] + " "
+    playerCardsEl.textContent += playerCards[i] + playerSuits[i] + " "
   }
 
   console.log("rendered")
@@ -139,6 +152,8 @@ function newCard() {
     let newCard = getRandomCard()
     playerCards.push(newCard)
     playerSum += newCard
+    let newSuit = getRandomSuit()
+    playerSuits.push(newSuit)
     renderGame()
     console.log("Drawing new card...")
   } else {
@@ -157,8 +172,11 @@ function stay() {
         let newCard = getRandomCard()
         dealerCards.push(newCard)
         dealerSum += newCard
-        dealerCardsEl.textContent += dealerCards[i] + " "
-        dealerSumEl.textContent = "Total: " + dealerSum
+        let newSuit = getRandomSuit()
+        dealerSuits.push(newSuit)
+
+        dealerCardsEl.textContent += dealerCards[i] + dealerSuits[i] + " "
+        displayDealerSum()
       }
     }
     if (dealerSum === 21) {
@@ -166,25 +184,30 @@ function stay() {
         messageEl.textContent = "It's a tie! You win nothing"
       } else {
         messageEl.textContent = "You lost $ 10"
-        player.chips -= 10
+        loseChips()
+        displayPlayerChips()
         isAlive = false
       }
     } else if (dealerSum > 21) {
       messageEl.textContent = "The dealer busted! You won $ 10"
-      player.chips += 10
+      winChips()
+      displayPlayerChips()
       hasBlackJack = true
     } else if (dealerSum < 21) {
       if (playerSum > dealerSum) {
         messageEl.textContent = "You won $ 10!!"
-        player.chips += 10
+        winChips()
+        displayPlayerChips()
       } else if (playerSum < dealerSum) {
         messageEl.textContent = "You lost $ 10"
-        player.chips -= 10
+        loseChips()
+        displayPlayerChips()
       } else if (playerSum === dealerSum) {
         messageEl.textContent = "It's a tie!"
       }
     }
-    displayPlayerChips
+    displayDealerSum()
+    displayPlayerChips()
   } else {
     console.log("Please restart the game")
   }
