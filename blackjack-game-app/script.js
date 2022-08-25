@@ -21,7 +21,7 @@ function displayPlayerSum() {
 }
 
 function displayPlayerChips() {
-  playerEl.textContent = player.name + ": $" + player.chips
+  playerEl.textContent = player.name + ": $ " + player.chips
 }
 
 function displayDealerSum() {
@@ -44,6 +44,9 @@ let player = {
 
 // interface
 player.name = prompt("Please enter your name: ", "John")
+if (player.name === null) {
+  player.name = "WeirdChamp"
+}
 displayPlayerChips()
 
 
@@ -109,6 +112,7 @@ function startGame() {
 
 // actual game
 function renderGame() {
+  playerCardsEl.textContent = "Player: "
   for (let i = 0; i < playerCards.length; i++) {
     playerCardsEl.textContent += playerCards[i] + " "
   }
@@ -117,7 +121,7 @@ function renderGame() {
   if (playerSum <= 21) {
     message = "Do you want to draw a new card?"
   } else {
-    message = "Bust! You lost $10"
+    message = "Bust! You lost $ 10"
     loseChips()
     isAlive = false
   }
@@ -146,6 +150,8 @@ function newCard() {
 function stay() {
   if (isAlive === true && hasBlackJack === false) {
     choseStay = true
+    isAlive = false
+    console.log("You chose to stay")
     for (let i = 0; i < 10; i++) {
       if (dealerSum < 18) {
         let newCard = getRandomCard()
@@ -157,28 +163,28 @@ function stay() {
     }
     if (dealerSum === 21) {
       if (playerSum === 21) {
-        messageEl.textContent = "It's a tie!"
+        messageEl.textContent = "It's a tie! You win nothing"
       } else {
-        messageEl.textContent = "You lost $10"
+        messageEl.textContent = "You lost $ 10"
         player.chips -= 10
         isAlive = false
       }
     } else if (dealerSum > 21) {
-      messageEl.textContent = "The dealer busted! You won $10"
+      messageEl.textContent = "The dealer busted! You won $ 10"
       player.chips += 10
       hasBlackJack = true
     } else if (dealerSum < 21) {
       if (playerSum > dealerSum) {
-        messageEl.textContent = "You won $10!!"
+        messageEl.textContent = "You won $ 10!!"
         player.chips += 10
       } else if (playerSum < dealerSum) {
-        messageEl.textContent = "You lost $10"
+        messageEl.textContent = "You lost $ 10"
         player.chips -= 10
       } else if (playerSum === dealerSum) {
         messageEl.textContent = "It's a tie!"
       }
     }
-    playerEl.textContent = player.name + ": $" + player.chips
+    displayPlayerChips
   } else {
     console.log("Please restart the game")
   }
