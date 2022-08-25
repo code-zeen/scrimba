@@ -43,7 +43,7 @@ let player = {
 }
 
 // interface
-player.name = prompt("Please enter your name: ", "John")
+player.name = prompt("Please enter your name: ", "John Doe")
 if (player.name === null) {
   player.name = "WeirdChamp"
 }
