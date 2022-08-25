@@ -1,7 +1,4 @@
-@font-face {
-  font-family: 'Noto Color Emoji';
-  src: url(https://raw.githack.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf);
-}
+@charset "utf-8";
 
 body {
   height: 100vh;
@@ -51,7 +48,7 @@ button:active {
 }
 .cards {
   margin-bottom: 8px;
-  font-family: 'Noto Color Emoji', sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 .sum {
   margin-top: 0;
