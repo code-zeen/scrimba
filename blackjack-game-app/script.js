@@ -5,7 +5,7 @@ let dealerCards = []
 let dealerSuits = []
 let dealerSum = 0
 
-let fullSuit = ["♣️", "♦️", "♥️", "♠️"]
+let fullSuit = ["\u2663\ufe0f", "\u2666\uFE0F", "\u2665\ufe0f", "\u2660\ufe0f"]
 let hasBlackJack = false
 let isAlive = false
 let choseStay = false
@@ -43,7 +43,7 @@ let player = {
 }
 
 // interface
-player.name = prompt("Please enter your name: ", "John Doe")
+// player.name = prompt("Please enter your name: ", "John Doe")
 if (player.name === null) {
   player.name = "WeirdChamp"
 }
