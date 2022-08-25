@@ -55,3 +55,21 @@ function switchMode() {
     isDarkMode = true
   }
 }
+
+// copy to clipboard on click
+let toolTip = document.getElementsByClassName("tooltip")
+
+for (let i = 0; i < toolTip.length; i++) {
+  toolTip[i].textContent = "Click to copy"
+}
+
+function copyToClipboardOne() {
+  let copyText = document.getElementById("option-one").textContent
+  navigator.clipboard.writeText(copyText)
+  toolTip[0].textContent = "Copied!"
+}
+function copyToClipboardTwo() {
+  let copyText = document.getElementById("option-two").textContent
+  navigator.clipboard.writeText(copyText)
+  toolTip[1].textContent = "Copied!"
+}
