@@ -94,7 +94,7 @@ hr {
   font-size: 14px;
   border-radius: 5px;
   position: absolute;
-  background: rgba(238, 238, 238, 0.637);
+  background: rgba(255, 255, 255, 0.6);
   text-align: center;
   transform: translateY(-40px);
 }
@@ -118,6 +118,10 @@ hr {
 p.light-theme {
   color: #6b7280;
 }
-#passwords.light-theme>div {
+#passwords.light-theme .options {
   background: #273549;
+}
+#passwords.light-theme .tooltip {
+  background: rgba(39, 53, 73, 0.6);
+  color: white;
 }
