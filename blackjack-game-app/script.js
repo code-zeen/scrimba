@@ -11,16 +11,20 @@ let playerEl = document.getElementById("player-el")
 
 let player = {
   name: "Codezeen",
-  chips: 145
+  chips: 150
 }
 
 playerEl.textContent = player.name + ": $" + player.chips
 
 function getRandomCard() {
-  let randomCard = Math.floor(Math.random()*13) + 1
+  let randomCard = Math.floor(Math.random() * 13) + 1
 
   if (randomCard === 1) {
-    return 11
+    if (sum < 11) {
+      return 11
+    } else {
+      return 1
+    }
   } else if (randomCard > 10) {
     return 10
   } else {
@@ -30,6 +34,7 @@ function getRandomCard() {
 
 function startGame() {
   isAlive = true
+  hasBlackJack = false
   let firstCard = getRandomCard()
   let secondCard = getRandomCard()
   cards = [firstCard, secondCard]
@@ -38,24 +43,32 @@ function startGame() {
 }
 
 function renderGame() {
-  cardsEl.textContent = "Cards: "
+  if (player.chips > 0) {
+    cardsEl.textContent = "Cards: "
 
-  for (let i = 0; i < cards.length; i++) {
-    cardsEl.textContent += cards[i] + " "
-  }
-  
-  console.log("rendered")
-  if (sum < 21) {
-    message = "Do you want to draw a new card?"
-  } else if (sum === 21) {
-    message = "Wohoo! You won."
-    hasBlackJack = true
+    for (let i = 0; i < cards.length; i++) {
+      cardsEl.textContent += cards[i] + " "
+    }
+
+    console.log("rendered")
+    if (sum < 21) {
+      message = "Do you want to draw a new card?"
+    } else if (sum === 21) {
+      message = "Wohoo! You won."
+      player.chips += 10
+      hasBlackJack = true
+    } else {
+      message = "Bust! You lost $10"
+      player.chips -= 10
+      isAlive = false
+    }
+
+    playerEl.textContent = player.name + ": $" + player.chips
+    messageEl.textContent = message
+    sumEl.textContent = "Sum: " + sum
   } else {
-    message = "You lost all your money"
-    isAlive = false
+      messageEl.textContent = "Sorry, you're out of money"
   }
-  messageEl.textContent = message
-  sumEl.textContent = "Sum: " + sum
 }
 
 function newCard() {
@@ -68,6 +81,5 @@ function newCard() {
   } else {
     console.log("Please restart the game")
   }
-  
-} 
 
+}
