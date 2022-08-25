@@ -40,3 +40,10 @@ button:active {
   font-weight: bold;
   font-size: 24px;
 }
+.cards {
+  margin-bottom: 0;
+}
+.sum {
+  margin-top: 0;
+  font-weight: 400;
+}
