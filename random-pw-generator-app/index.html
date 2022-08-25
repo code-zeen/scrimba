@@ -7,16 +7,17 @@
 
 <body>
   <div class="container">
-    <div id="title-el">
+    <button id="light-dark-btn" onclick="switchMode()"></button>
+    <div id="title">
       <h2>Generate a</h2>
       <h2>random password</h2>
     </div>
     <p>Never use an insecure password again.</p>
-    <button onclick="generatePw()">Generate passwords</button>
+    <button id="generate-btn" onclick="generatePw()">Generate passwords</button>
     <hr>
-    <div id="passwords-el">
-      <div id="option-one"></div>
-      <div id="option-two"></div>
+    <div id="passwords">
+      <div id="option-one">-</div>
+      <div id="option-two">-</div>
     </div>
   </div>
 

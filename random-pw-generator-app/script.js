@@ -19,3 +19,39 @@ optionTwo.textContent = ""
   optionTwo.textContent += characters[randomIndex]
  }
 }
+
+// light/dark mode button
+let container = document.querySelector(".container")
+let lightDarkBtn =  document.getElementById("light-dark-btn")
+let title = document.getElementById("title")
+let para = document.querySelector("p")
+let passwords = document.getElementById("passwords")
+
+let isDarkMode = true
+
+lightDarkBtn.textContent = "☀️"
+
+function switchMode() {
+  if (isDarkMode === true) {
+    lightDarkBtn.textContent = "🌑"
+
+    container.classList.toggle("light-theme")
+    lightDarkBtn.classList.toggle("light-theme")
+    title.classList.toggle("light-theme")
+    para.classList.toggle("light-theme")
+    passwords.classList.toggle("light-theme")
+
+    isDarkMode = false
+
+  } else if (isDarkMode === false) {
+    lightDarkBtn.textContent = "☀️"
+
+    container.classList.toggle("light-theme")
+    lightDarkBtn.classList.toggle("light-theme")
+    title.classList.toggle("light-theme")
+    para.classList.toggle("light-theme")
+    passwords.classList.toggle("light-theme")
+    
+    isDarkMode = true
+  }
+}
