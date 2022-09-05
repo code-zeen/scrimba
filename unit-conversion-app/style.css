@@ -22,11 +22,16 @@ body {
 }
 h1 {
   margin: 0;
-  padding: 33px;
+  padding-top: 33px;
+  padding-bottom: 13px;
   font-size: 28px;
   font-weight: bold;
 }
-#input {
+#error-el {
+  margin: 0;
+  color: rgb(255, 143, 143);
+}
+#input-el {
   width: 117px; height: 83px;
   border: 2px solid #b295ff;
   border-radius: 5px;
@@ -47,7 +52,12 @@ button {
   color: #3d3d3d;
   background: #fff;
 }
-
+button:hover {
+  cursor: pointer;
+}
+button:active {
+  background: #e3e3e3;
+}
 .duo {
   width: 500px;
   margin: 23px auto;
