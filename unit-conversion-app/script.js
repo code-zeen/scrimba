@@ -37,13 +37,13 @@ let maxxTxt = ""
 
 function convert() {
   lengthTxt = `
-    ${input.value} m = ${mToFt(input.value)} ft | ${input.value} ft = ${ftToM(input.value)} m
+    ${input.value} m = <b>${mToFt(input.value)} ft</b> | ${input.value} ft = <b>${ftToM(input.value)} m</b>
   `
   volumeTxt = `
-    ${input.value} L = ${lToGal(input.value)} gal | ${input.value} gal = ${galToL(input.value)} L
+    ${input.value} L = <b>${lToGal(input.value)} gal</b> | ${input.value} gal = <b>${galToL(input.value)} L</b>
   `
   massTxt = `
-    ${input.value} kg = ${kgToLbs(input.value)} lbs | ${input.value} lbs = ${lbsToKg(input.value)} kg
+    ${input.value} kg = <b>${kgToLbs(input.value)} lbs</b> | ${input.value} lbs = <b>${lbsToKg(input.value)} kg</b>
   `
 
   if (isNaN(input.value)) {         // not a number
@@ -59,9 +59,9 @@ function convert() {
 }
 
 function render() {
-  lengthEl.textContent = lengthTxt
-  volumeEl.textContent = volumeTxt
-  massEl.textContent = massTxt
+  lengthEl.innerHTML = lengthTxt
+  volumeEl.innerHTML = volumeTxt
+  massEl.innerHTML = massTxt
 }
 
 inputBtn.addEventListener("click", convert)
