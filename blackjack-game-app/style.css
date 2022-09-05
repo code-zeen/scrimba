@@ -48,7 +48,7 @@ button:active {
 }
 .cards {
   margin-bottom: 8px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif
+  font-family: "Verdana, Geneva, Tahoma, sans-serif"
 }
 .sum {
   margin-top: 0;

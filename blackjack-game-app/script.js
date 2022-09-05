@@ -5,7 +5,7 @@ let dealerCards = []
 let dealerSuits = []
 let dealerSum = 0
 
-let fullSuit = ["\u2663\ufe0f", "\u2666\uFE0F", "\u2665\ufe0f", "\u2660\ufe0f"]
+let fullSuit = ["\u2663\ufe0f", "\u2666\uFE0F", "\u2665\uFE0F", "\u2660\ufe0f"]
 let hasBlackJack = false
 let isAlive = false
 let choseStay = false
