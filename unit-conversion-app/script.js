@@ -1,9 +1,11 @@
+const body = document.querySelector("body")
 const input = document.getElementById("input-el")
 const errorEl = document.getElementById("error-el")
 const inputBtn = document.getElementById("input-btn")
 const lengthEl = document.getElementById("length-el")
 const volumeEl = document.getElementById("volume-el")
 const massEl = document.getElementById("mass-el")
+const darkBtn = document.getElementById("dark-btn")
 
 function mToFt(num) {
   return (num * 3.281).toFixed(3)
@@ -44,10 +46,12 @@ function convert() {
     ${input.value} kg = ${kgToLbs(input.value)} lbs | ${input.value} lbs = ${lbsToKg(input.value)} kg
   `
 
-  if (isNaN(input.value) || input.value === undefined) {
+  if (isNaN(input.value)) {         // not a number
     errorEl.textContent = "Please input a valid number"
-  } else if (input.value === "") {
+  } else if (input.value === "") {  // empty
     errorEl.textContent = "Input is empty"
+  } else if (input.value.trim().length === 0) {
+    errorEl.textContent = "Please input a valid number"
   } else {
     errorEl.innerHTML = "&nbsp;"
     render()
@@ -61,3 +65,13 @@ function render() {
 }
 
 inputBtn.addEventListener("click", convert)
+
+// dark theme
+darkBtn.addEventListener("click", function() {
+  body.classList.toggle("dark-theme")
+  if (body.classList.contains("dark-theme")) {
+    darkBtn.textContent = "Switch to light theme"
+  } else {
+    darkBtn.textContent = "Switch to dark theme"
+  }
+})

@@ -4,10 +4,11 @@
 body {
   margin: 0; padding: 0;
   font-family: 'Inter', sans-serif;
+  text-align: center;
 }
 .container {
-  width: 550px; height: 729px;
-  margin: 20px auto;
+  width: 550px; height: fit-content;
+  margin: 40px auto;
   text-align: center;
   border-radius: 13px;
   background: #f4f4f4;
@@ -64,7 +65,7 @@ button:active {
   padding-top: 31px;
   padding-bottom: 18px;
   background: #fff;
-  border-radius: 5px 0 0 0;
+  border-radius: 11px 0 0 0;
 }
 h3 {
   margin: 0;
@@ -75,4 +76,37 @@ h3 {
 p {
   font-size: 14px;
   line-height: 20px;
+}
+#dark-btn {
+  width: fit-content;
+  text-decoration: underline;
+}
+#dark-btn:hover {
+  cursor: pointer;
+  color: #6943ff;
+}
+/* dark theme */
+
+.dark-theme {
+  background: #1c1c1c;
+}
+.dark-theme .container {
+  background: #1f2937;
+  box-shadow: none;
+}
+.dark-theme .duo {
+  background: #223549;
+}
+.dark-theme .duo h3 {
+  color: #ccc1ff;
+}
+.dark-theme .duo p {
+  color: #fff;
+}
+.dark-theme #dark-btn {
+  background: none;
+  color: #fff;
+}
+.dark-theme #dark-btn:hover {
+  color: #b295ff;
 }
