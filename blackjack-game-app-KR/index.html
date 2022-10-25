@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Black Jack</h1>
+    <p id="message-el">어서오세요. 게임을 시작할까요?</p>
+    <p id="player-cards-el" class="cards">플레이어:</p>
+    <p id="player-sum-el" class="sum">합:</p>
+    <p id="dealer-cards-el" class="cards">딜러:</p>
+    <p id="dealer-sum-el" class="sum">합:</p>
+    <button id="start-btn" onclick="startGame()">시작하기!</button>
+    <br>
+    <button id="hit-btn" class="disabled" onclick="newCard()">히트</button>
+    <br>
+    <button id="stay-btn" class="disabled" onclick="stay()">스테이</button>
+    <p id="player-el"></p>
+    <script src="script.js"></script>
+  </body>
+</html>
