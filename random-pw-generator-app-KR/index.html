@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <button id="light-dark-btn" onclick="switchMode()"></button>
+    <div id="title">
+      <h2><span>안전한 비밀번호</span>로</h2>
+      <h2>계정을 보호하세요.</h2>
+    </div>
+    <p>랜덤 암호 생성 프로그램</p>
+    <button id="generate-btn" onclick="generatePw()">암호 만들기</button>
+    <hr>
+    <div id="passwords">
+      <div>
+        <div class="options" onclick="copyToClipboardOne()">-</div>
+        <div class="tooltip"></div>
+      </div>
+      <div>
+        <div class="options" onclick="copyToClipboardTwo()">-</div>
+        <div class="tooltip"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
