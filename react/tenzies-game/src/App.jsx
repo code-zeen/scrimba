@@ -46,13 +46,16 @@ export default function App() {
   }
 
   function rerollDice() {
-    setDice(prevState => prevState.map(prevDie => {
+    if (tenzies) {
+      setDice(allNewDice())
+    } else {
+      setDice(prevState => prevState.map(prevDie => {
       if (prevDie.isHeld === false) {
         return {...prevDie, value: getRandomDie()}
       } else {
         return prevDie
       }
-    }))
+    }))}
   }
 
   return (
