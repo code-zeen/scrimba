@@ -4,6 +4,16 @@ import Die from './components/Die'
 export default function App() {
 
   const [dice, setDice] = React.useState(allNewDice())
+  const [tenzies, setTenzies] = React.useState(true)
+
+  React.useEffect(() => {
+    const isAllHeld = dice.every(die => die.isHeld)
+    const firstValue = dice[0].value
+    const allSameValue = dice.every(die => die.value === firstValue)
+    setTenzies(allSameValue)
+
+    isAllHeld && tenzies ? console.log('u won') : ""
+  }, [dice])
 
   const diceElements = dice.map(die => (
     <Die key={die.id} id={die.id} value={die.value} isHeld={die.isHeld} handleClick={holdDice}/>
@@ -24,7 +34,6 @@ export default function App() {
     }
     return newDice
   }
-  console.log(dice)
 
   function holdDice(id) {
     setDice(prevState => prevState.map(prevDie => {
