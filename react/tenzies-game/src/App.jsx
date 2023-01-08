@@ -26,12 +26,24 @@ export default function App() {
   }
   console.log(dice)
 
-  function rerollDice() {
-    setDice(allNewDice())
+  function holdDice(id) {
+    setDice(prevState => prevState.map(prevDie => {
+      if (prevDie.id === id) {
+        return {...prevDie, isHeld: !prevDie.isHeld}
+      } else {
+        return prevDie
+      }
+    }))
   }
 
-  function holdDice(id) {
-    console.log(id)
+  function rerollDice() {
+    setDice(prevState => prevState.map(prevDie => {
+      if (prevDie.isHeld === false) {
+        return {...prevDie, value: getRandomDie()}
+      } else {
+        return prevDie
+      }
+    }))
   }
 
   return (
