@@ -6,7 +6,19 @@ export default function App() {
     <main>
       <h1 className="title">Tenzies</h1>
       <p className="how-to-play">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-      <Die/>
+      <div className="dice">
+        <Die/>
+        <Die/>
+        <Die/>
+        <Die/>
+        <Die/>
+        <Die/>
+        <Die/>
+        <Die/>
+        <Die/>
+        <Die/>
+      </div>
+      <button>Roll</button>
     </main>
   )
 }

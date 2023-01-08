@@ -8,17 +8,8 @@ export default function Die(props) {
   const randomDie = getRandomDie()
 
   return (
-    <div className="dice">
-      <div className="die">{randomDie}</div>
-      <div className="die">{randomDie}</div>
-      <div className="die">{randomDie}</div>
-      <div className="die">{randomDie}</div>
-      <div className="die">{randomDie}</div>
-      <div className="die">{randomDie}</div>
-      <div className="die">{randomDie}</div>
-      <div className="die">{randomDie}</div>
-      <div className="die">{randomDie}</div>
-      <div className="die">{randomDie}</div>
+    <div className="die">
+      {randomDie}
     </div>
   )
 }
