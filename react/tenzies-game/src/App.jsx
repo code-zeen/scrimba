@@ -5,9 +5,9 @@ export default function App() {
 
   const [dice, setDice] = React.useState(allNewDice())
 
-  const diceElements = dice.map(
-    die => <Die key={die.id} value={die.value}/>
-    )
+  const diceElements = dice.map(die => (
+    <Die key={die.id} id={die.id} value={die.value} isHeld={die.isHeld} handleClick={holdDice}/>
+  ))
 
   function getRandomDie() {
     return Math.floor(Math.random() * 6) + 1
@@ -24,11 +24,14 @@ export default function App() {
     }
     return newDice
   }
-
   console.log(dice)
 
   function rerollDice() {
     setDice(allNewDice())
+  }
+
+  function holdDice(id) {
+    console.log(id)
   }
 
   return (

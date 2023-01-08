@@ -39,11 +39,17 @@ main {
   line-height: 56px;;
   text-align: center;
   font-family: 'Karla', sans-serif;
-  font-size: 21px;
+  font-size: 28px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
   border-radius: 4px;
   color: #2b283a;
   cursor: pointer;
+}
+.die.is-held {
+  background-color: #59e391;
+}
+.die.not-held {
+  background-color: #fff;
 }
 button {
   margin-top: 36px;
