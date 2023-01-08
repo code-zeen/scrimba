@@ -34,6 +34,7 @@ main {
   gap: 24px;
 }
 .die {
+  position: relative;
   width: 56px;
   height: 56px;
   line-height: 56px;;
@@ -50,6 +51,117 @@ main {
 }
 .die.not-held {
   background-color: #fff;
+}
+
+/* Madness */
+.die.one .dot {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.die.two .dot:nth-of-type(1),
+.die.two .dot:nth-of-type(2),
+.die.two .dot:nth-of-type(3) {
+  left: 15%;
+  top: 15%;
+}
+.die.two .dot:nth-of-type(4),
+.die.two .dot:nth-of-type(5),
+.die.two .dot:nth-of-type(6) {
+  right: 15%;
+  bottom: 15%;
+}
+.die.three .dot:nth-of-type(1),
+.die.three .dot:nth-of-type(2) {
+  left: 15%;
+  top: 15%;
+}
+.die.three .dot:nth-of-type(3),
+.die.three .dot:nth-of-type(4) {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.die.three .dot:nth-of-type(5),
+.die.three .dot:nth-of-type(6) {
+  right: 15%;
+  bottom: 15%;
+}
+.die.four .dot:nth-of-type(1),
+.die.four .dot:nth-of-type(2),
+.die.four .dot:nth-of-type(3) {
+  left: 15%;
+  top: 15%;
+}
+.die.four .dot:nth-of-type(4) {
+  right: 15%;
+  top: 15%;
+}
+.die.four .dot:nth-of-type(5) {
+  left: 15%;
+  bottom: 15%;
+}
+.die.four .dot:nth-of-type(6) {
+  right: 15%;
+  bottom: 15%;
+}
+.die.five .dot:nth-of-type(1),
+.die.five .dot:nth-of-type(2) {
+  left: 15%;
+  top: 15%;
+}
+.die.five .dot:nth-of-type(3) {
+  right: 15%;
+  top: 15%;
+}
+.die.five .dot:nth-of-type(4) {
+  left: 15%;
+  bottom: 15%;
+}
+.die.five .dot:nth-of-type(5) {
+  right: 15%;
+  bottom: 15%;
+}
+.die.five .dot:nth-of-type(6) {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.die.six .dot:nth-of-type(1) {
+  left: 15%;
+  top: 15%;
+}
+.die.six .dot:nth-of-type(2) {
+  right: 15%;
+  top: 15%;
+}
+.die.six .dot:nth-of-type(3) {
+  left: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.die.six .dot:nth-of-type(4) {
+  right: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.die.six .dot:nth-of-type(5) {
+  left: 15%;
+  bottom: 15%;
+}
+.die.six .dot:nth-of-type(6) {
+  right: 15%;
+  bottom: 15%;
+}
+
+/* Dot Base */
+.die .dot {
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: #333;
 }
 button {
   margin-top: 36px;
