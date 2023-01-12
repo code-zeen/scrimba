@@ -5,14 +5,26 @@ import Title from './components/title'
 export default function App() {
 
   const [title, setTitle] = React.useState(false)
-  const [triviaData, setTriviaData] = React.useState({})
+  const [triviaData, setTriviaData] = React.useState([])
 
-  React.useEffect(function() {
+  React.useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5")
       .then(res => res.json())
-      .then(data => setTriviaData(data))
+      .then(data => setTriviaData(data.results))
   }, [])
-  
+
+  const questionElements = triviaData.map((datum, index) => {
+    return (
+      <Question
+        key={index}
+        id={index}
+        question={datum.question}
+        correctAnswer={datum.correct_answer}
+        incorrectAnswer={datum.incorrect_answer}
+      />
+    )
+  })
+
   function startQuiz() {
     setTitle(prevState => !prevState)
   }
@@ -20,7 +32,7 @@ export default function App() {
   return (
     <main>
       {title && <Title handleClick={startQuiz}/>}
-      <Question/>
+      {questionElements}
     </main>
   )
 }
