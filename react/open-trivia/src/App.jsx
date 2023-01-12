@@ -9,7 +9,7 @@ export default function App() {
 
   React.useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5")
-      .then(res => res.json())
+      .then(res => res.json()) 
       .then(data => setTriviaData(data.results))
   }, [])
 
@@ -20,7 +20,7 @@ export default function App() {
         id={index}
         question={datum.question}
         correctAnswer={datum.correct_answer}
-        incorrectAnswer={datum.incorrect_answer}
+        incorrectAnswers={datum.incorrect_answers}
       />
     )
   })
@@ -32,7 +32,8 @@ export default function App() {
   return (
     <main>
       {title && <Title handleClick={startQuiz}/>}
-      {questionElements}
+      {!title && questionElements}
+      {!title && <button className="btn-check">Check Answers</button>}
     </main>
   )
 }
