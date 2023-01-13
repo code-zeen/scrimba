@@ -1,12 +1,25 @@
 import React from "react"
-import Answers from "./answers"
+import Answer from "./answer"
 
-export default function QuestionBlock() {
-  
+export default function QuestionBlock({ id, question, correctAnswer, incorrectAnswers }) {
+  const answerElements = incorrectAnswers.map((answer, index) => {
+    return (
+      <Answer
+        key={index}
+        qIndex={id}
+        index={index}
+        value={answer}
+      />
+    )
+  })
+
+  console.log(incorrectAnswers)
   return (
     <div className="question-block">
-      <h2>How do you say goodbye in Spanish?</h2>
-      <Answers/>
+      <h3>{question}</h3>
+    <div className="answers">
+      {answerElements}
+    </div>
       <hr/>
     </div>
   )

@@ -73,7 +73,6 @@ button:active {
 .answers {
   display: flex;
   gap: 24px;
-  /* flex-direction: column; FOR PHONE */
 }
 input[type="radio"] {
   display: none;
