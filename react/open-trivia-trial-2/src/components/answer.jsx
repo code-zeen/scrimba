@@ -1,11 +1,25 @@
 import React from "react"
 
-export default function Answer({qIndex, index, value}) {
+export default function Answer({ questionIndex, index, anyAnswer, isChecked }) {
+
+  // dangerously setting innter html
+  function createMarkup(prop) {
+    return {__html: prop};
+  }
 
   return (
     <div className="answer">
-        <input type="radio" id={qIndex + "" + index} name={qIndex} value={value}/>
-        <label htmlFor={qIndex + "" + index}>{value}</label>
+        <input 
+          type="radio" 
+          id={questionIndex + "" + index} 
+          name={questionIndex} 
+          value={anyAnswer}
+          checked={isChecked}
+        />
+        <label 
+          htmlFor={questionIndex + "" + index} 
+          dangerouslySetInnerHTML={createMarkup(anyAnswer)}>
+        </label>
     </div>
   )
 }

@@ -9,15 +9,30 @@ export default function App() {
 
   React.useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5")
-    .then(res => res.json())
-    .then(data => setTriviaData(data.results))
+      .then(res => res.json())
+      .then(data => data.results.map(datum => ({
+        ...datum,
+        correct_answer: {
+          string: datum.correct_answer,
+          isChecked: false
+        },
+        incorrect_answers: [
+          ...datum.incorrect_answers.map(answer => ({
+            string: answer,
+            isChecked: false
+          }))
+        ]
+      })))
+      .then(formattedData => setTriviaData(formattedData))
   }, [])
+
 
   function startQuiz() {
     setTitleOn(prev => !prev)
   }
 
   const questionElements = triviaData.map((datum, index) => {
+
     return (
       <QuestionBlock
         key={index}
