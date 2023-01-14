@@ -3,6 +3,8 @@ import Answer from "./answer"
 
 export default function QuestionBlock({ id, question, correctAnswer, incorrectAnswers, selectedAnswer, handleChange }) {
 
+  const [randomizedAnswers, setRandomizedAnswers] = React.useState(randomizeAnswers())
+
   // dangerously setting innter html
   function createMarkup(prop) {
     return {__html: prop};
@@ -13,7 +15,7 @@ export default function QuestionBlock({ id, question, correctAnswer, incorrectAn
   }
 
   function randomizeAnswers() {
-    const answersArray = incorrectAnswers
+    const answersArray = JSON.parse(JSON.stringify(incorrectAnswers))
 
     if (answersArray.length === 3) {
       answersArray.splice(randNum(), 0, correctAnswer)
@@ -25,9 +27,7 @@ export default function QuestionBlock({ id, question, correctAnswer, incorrectAn
     return answersArray
   }
 
-
-
-  const answerElements = randomizeAnswers().map((answer, index) => {
+  const answerElements = randomizedAnswers.map((answer, index) => {
     return (
       <Answer
         key={index}
