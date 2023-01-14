@@ -12,16 +12,7 @@ export default function App() {
       .then(res => res.json())
       .then(data => data.results.map(datum => ({
         ...datum,
-        correct_answer: {
-          string: datum.correct_answer,
-          isChecked: false
-        },
-        incorrect_answers: [
-          ...datum.incorrect_answers.map(answer => ({
-            string: answer,
-            isChecked: false
-          }))
-        ]
+        selectedAnswer: ""
       })))
       .then(formattedData => setTriviaData(formattedData))
   }, [])
@@ -29,6 +20,25 @@ export default function App() {
 
   function startQuiz() {
     setTitleOn(prev => !prev)
+  }
+
+  console.log(triviaData)
+
+  function handleChange(event) {
+    const {name, value} = event.target
+    setTriviaData(prev => prev.map(prev => {
+      if (prev.question === name) {
+        return {
+          ...prev,
+          selectedAnswer: value
+        } 
+      } else {
+        return {
+          ...prev
+        }
+      }
+    })
+    )
   }
 
   const questionElements = triviaData.map((datum, index) => {
@@ -40,6 +50,8 @@ export default function App() {
         question={datum.question}
         correctAnswer={datum.correct_answer}
         incorrectAnswers={datum.incorrect_answers}
+        selectedAnswer={datum.selectedAnswer}
+        handleChange={handleChange}
       />
     )
   })

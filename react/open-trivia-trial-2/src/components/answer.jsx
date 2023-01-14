@@ -1,11 +1,12 @@
 import React from "react"
 
-export default function Answer({ questionIndex, index, anyAnswer, isChecked }) {
+export default function Answer({ questionIndex, index, anyAnswer, selectedAnswer, handleChange }) {
 
   // dangerously setting innter html
   function createMarkup(prop) {
     return {__html: prop};
   }
+
 
   return (
     <div className="answer">
@@ -14,7 +15,8 @@ export default function Answer({ questionIndex, index, anyAnswer, isChecked }) {
           id={questionIndex + "" + index} 
           name={questionIndex} 
           value={anyAnswer}
-          checked={isChecked}
+          checked={selectedAnswer === anyAnswer}
+          onChange={handleChange}
         />
         <label 
           htmlFor={questionIndex + "" + index} 

@@ -1,7 +1,7 @@
 import React from "react"
 import Answer from "./answer"
 
-export default function QuestionBlock({ id, question, correctAnswer, incorrectAnswers }) {
+export default function QuestionBlock({ id, question, correctAnswer, incorrectAnswers, selectedAnswer, handleChange }) {
 
   // dangerously setting innter html
   function createMarkup(prop) {
@@ -17,24 +17,25 @@ export default function QuestionBlock({ id, question, correctAnswer, incorrectAn
 
     if (answersArray.length === 3) {
       answersArray.splice(randNum(), 0, correctAnswer)
-    } else if (correctAnswer.string === "True") {
+    } else if (correctAnswer === "True") {
       answersArray.splice(0, 0, correctAnswer)
-    } else if (correctAnswer.string === "False") {
+    } else if (correctAnswer === "False") {
       answersArray.push(correctAnswer)
     }
     return answersArray
   }
 
-  console.log(randomizeAnswers())
+
 
   const answerElements = randomizeAnswers().map((answer, index) => {
     return (
       <Answer
         key={index}
-        questionIndex={id}
+        questionIndex={question}
         index={index}
-        anyAnswer={answer.string}
-        isChecked={answer.isChecked}
+        anyAnswer={answer}
+        selectedAnswer={selectedAnswer}
+        handleChange={handleChange}
       />
     )
   })
