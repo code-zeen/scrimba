@@ -23,8 +23,6 @@ export default function App() {
     setTitleOn(prev => !prev)
   }
 
-  // console.log(triviaData)
-
   function handleChange(event) {
     const {name, value} = event.target
     setTriviaData(prev => prev.map(prev => {
@@ -41,7 +39,6 @@ export default function App() {
     })
     )
   }
-
 
   function checkAnswers() {
     setIsChecked(prev => !prev)
@@ -62,6 +59,7 @@ export default function App() {
         incorrectAnswers={datum.incorrect_answers}
         selectedAnswer={datum.selectedAnswer}
         handleChange={handleChange}
+        isChecked={isChecked}
       />
     )
   })

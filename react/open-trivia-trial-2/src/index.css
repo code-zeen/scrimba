@@ -100,17 +100,21 @@ input[type="radio"]:checked+label {
 .fa-circle-xmark {
   color: #f8bcbc;
 }
-.answer.correct input[type="radio"]:checked+label {
+.answer.revealed input[type="radio"]+label {
+  opacity: 0.5;
+}
+
+.answer.revealed input[type="radio"]:checked+label {
+  border: 1px solid #f8bcbc;
+  background-color: #f8bcbc;
+  color: #293264;
+  opacity: 1;
+}
+.answer.revealed.correct input[type="radio"]+label {
   border: #94d7a2;
   background-color: #94d7a2;
 }
 
-.answer.incorrect input[type="radio"]:checked+label {
-  border: 1px solid #f8bcbc;
-  background-color: #f8bcbc;
-  color: #293264;
-  opacity: 0.5;
-}
 .btn-check {
   align-self: center;
   max-width: 240px;

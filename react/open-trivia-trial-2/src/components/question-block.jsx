@@ -1,7 +1,7 @@
 import React from "react"
 import Answer from "./answer"
 
-export default function QuestionBlock({ question, correctAnswer, incorrectAnswers, selectedAnswer, handleChange }) {
+export default function QuestionBlock({ question, correctAnswer, incorrectAnswers, selectedAnswer, handleChange, isChecked }) {
 
   const [randomizedAnswers, setRandomizedAnswers] = React.useState(randomizeAnswers())
 
@@ -37,6 +37,7 @@ export default function QuestionBlock({ question, correctAnswer, incorrectAnswer
         anyAnswer={answer}
         selectedAnswer={selectedAnswer}
         handleChange={handleChange}
+        isChecked={isChecked}
       />
     )
   })
@@ -47,6 +48,7 @@ export default function QuestionBlock({ question, correctAnswer, incorrectAnswer
     <div className="answers">
       {answerElements}
     </div>
+    {/* For answers */}
     <p>{selectedAnswer === correctAnswer ? <i className="fa-solid fa-circle-check"></i> : <i className="fa-solid fa-circle-xmark"></i>}</p>
       <hr/>
     </div>
