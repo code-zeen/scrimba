@@ -15,7 +15,7 @@ export default function QuestionBlock({ question, correctAnswer, incorrectAnswer
   }
 
   function randomizeAnswers() {
-    const answersArray = JSON.parse(JSON.stringify(incorrectAnswers))
+    const answersArray = [...incorrectAnswers]
 
     if (answersArray.length === 3) {
       answersArray.splice(randNum(), 0, correctAnswer)
@@ -33,6 +33,7 @@ export default function QuestionBlock({ question, correctAnswer, incorrectAnswer
         key={index}
         questionIndex={question}
         index={index}
+        correctAnswer={correctAnswer}
         anyAnswer={answer}
         selectedAnswer={selectedAnswer}
         handleChange={handleChange}
@@ -40,15 +41,13 @@ export default function QuestionBlock({ question, correctAnswer, incorrectAnswer
     )
   })
 
-  console.log(selectedAnswer, correctAnswer)
-
   return (
     <div className="question-block">
       <h3 dangerouslySetInnerHTML={createMarkup(question)}></h3>
     <div className="answers">
       {answerElements}
     </div>
-    <p>{selectedAnswer === correctAnswer ? <i class="fa-solid fa-circle-check"></i> : <i class="fa-solid fa-circle-xmark"></i>}</p>
+    <p>{selectedAnswer === correctAnswer ? <i className="fa-solid fa-circle-check"></i> : <i className="fa-solid fa-circle-xmark"></i>}</p>
       <hr/>
     </div>
   )

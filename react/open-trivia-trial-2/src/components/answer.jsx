@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Answer({ questionIndex, index, anyAnswer, selectedAnswer, handleChange }) {
+export default function Answer({ questionIndex, index, correctAnswer, anyAnswer, selectedAnswer, handleChange }) {
 
   // dangerously setting innter html
   function createMarkup(prop) {
@@ -10,7 +10,7 @@ export default function Answer({ questionIndex, index, anyAnswer, selectedAnswer
 
 
   return (
-    <div className="answer">
+    <div className={"answer " + (anyAnswer === correctAnswer ? "correct" : "incorrect")}>
         <input 
           type="radio" 
           id={questionIndex + "" + index} 
