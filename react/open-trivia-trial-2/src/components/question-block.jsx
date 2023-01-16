@@ -1,7 +1,7 @@
 import React from "react"
 import Answer from "./answer"
 
-export default function QuestionBlock({ id, question, correctAnswer, incorrectAnswers, selectedAnswer, handleChange }) {
+export default function QuestionBlock({ question, correctAnswer, incorrectAnswers, selectedAnswer, handleChange }) {
 
   const [randomizedAnswers, setRandomizedAnswers] = React.useState(randomizeAnswers())
 
@@ -40,12 +40,15 @@ export default function QuestionBlock({ id, question, correctAnswer, incorrectAn
     )
   })
 
+  console.log(selectedAnswer, correctAnswer)
+
   return (
     <div className="question-block">
       <h3 dangerouslySetInnerHTML={createMarkup(question)}></h3>
     <div className="answers">
       {answerElements}
     </div>
+    <p>{selectedAnswer === correctAnswer ? <i class="fa-solid fa-circle-check"></i> : <i class="fa-solid fa-circle-xmark"></i>}</p>
       <hr/>
     </div>
   )

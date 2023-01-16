@@ -8,6 +8,7 @@ export default function Answer({ questionIndex, index, anyAnswer, selectedAnswer
   }
 
 
+
   return (
     <div className="answer">
         <input 

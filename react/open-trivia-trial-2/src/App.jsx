@@ -6,6 +6,7 @@ import Title from "./components/title"
 export default function App() {
   const [titleOn, setTitleOn] = React.useState(false)
   const [triviaData, setTriviaData] = React.useState([])
+  const [isChecked, setIsChecked] = React.useState(false)
 
   React.useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5")
@@ -22,7 +23,7 @@ export default function App() {
     setTitleOn(prev => !prev)
   }
 
-  console.log(triviaData)
+  // console.log(triviaData)
 
   function handleChange(event) {
     const {name, value} = event.target
@@ -41,12 +42,21 @@ export default function App() {
     )
   }
 
+
+  function checkAnswers() {
+    setIsChecked(prev => !prev)
+    console.log(isChecked)
+    triviaData.map(datum => {
+      datum.selectedAnswer === datum.correct_answer ? console.log("wow!!") : console.log("idiot")
+    })
+    
+  }
+
   const questionElements = triviaData.map((datum, index) => {
 
     return (
       <QuestionBlock
         key={index}
-        id={index}
         question={datum.question}
         correctAnswer={datum.correct_answer}
         incorrectAnswers={datum.incorrect_answers}
@@ -60,7 +70,7 @@ export default function App() {
     <main>
       {titleOn && <Title handleClick={startQuiz}/>}
       {questionElements}
-      <BtnCheck/>
+      <BtnCheck handleClick={checkAnswers}/>
     </main>
   )
 }
