@@ -49,7 +49,7 @@ export default function QuestionBlock({ question, correctAnswer, incorrectAnswer
       {answerElements}
     </div>
     {/* For answers */}
-    <p>{selectedAnswer === correctAnswer ? <i className="fa-solid fa-circle-check"></i> : <i className="fa-solid fa-circle-xmark"></i>}</p>
+    {/* <p>{selectedAnswer === correctAnswer ? <i className="fa-solid fa-circle-check"></i> : <i className="fa-solid fa-circle-xmark"></i>}</p> */}
       <hr/>
     </div>
   )

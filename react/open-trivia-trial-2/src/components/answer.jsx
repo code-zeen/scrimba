@@ -10,7 +10,7 @@ export default function Answer({ questionIndex, index, correctAnswer, anyAnswer,
 
 
   return (
-    <div className={"answer " + (isChecked ? "revealed " : "") + (anyAnswer === correctAnswer ? "correct" : "")}>
+    <div className={"answer " + (isChecked ?  "revealed " : "") + (anyAnswer === correctAnswer ? "correct" : "")}>
         <input 
           type="radio" 
           id={questionIndex + "" + index} 
@@ -18,6 +18,7 @@ export default function Answer({ questionIndex, index, correctAnswer, anyAnswer,
           value={anyAnswer}
           checked={selectedAnswer === anyAnswer}
           onChange={handleChange}
+          disabled={isChecked}
         />
         <label 
           htmlFor={questionIndex + "" + index} 

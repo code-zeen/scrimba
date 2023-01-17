@@ -4,7 +4,7 @@ import QuestionBlock from "./components/question-block"
 import Title from "./components/title"
 
 export default function App() {
-  const [titleOn, setTitleOn] = React.useState(false)
+  const [titleOn, setTitleOn] = React.useState(true)
   const [triviaData, setTriviaData] = React.useState([])
   const [isChecked, setIsChecked] = React.useState(false)
   const [score, setScore] = React.useState(0)
@@ -69,11 +69,12 @@ export default function App() {
   return (
     <main>
       {titleOn && <Title handleClick={startQuiz}/>}
-      {questionElements}
-      <div className="check-button">
+      {!titleOn && <h1 className="title">Quizzical</h1>}
+      {!titleOn && questionElements}
+      {!titleOn && <div className="check-button">
         {isChecked && <h3>You scored {score}/5 correct answers</h3>}
-        <BtnCheck handleClick={checkAnswers}/>
-      </div>
+        <BtnCheck handleClick={checkAnswers} isChecked={isChecked}/>
+      </div>}
     </main>
   )
 }

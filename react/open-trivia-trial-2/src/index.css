@@ -17,20 +17,22 @@
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 80px;
   min-width: 320px;
   min-height: 100vh;
 }
 main {
   display: flex;
   flex-direction: column;
-  /* width: 680px; */
+  max-width: 680px;
 }
 .title-page {
+  margin-top: 200px;
   text-align: center;
 }
 .title {
   color: #293264;
+  text-align: center;
 }
 .subtitle {
   color: #293264;
@@ -111,7 +113,7 @@ input[type="radio"]:checked+label {
   opacity: 1;
 }
 .answer.revealed.correct input[type="radio"]+label {
-  border: #94d7a2;
+  border: 1px solid #94d7a2;
   background-color: #94d7a2;
 }
 
