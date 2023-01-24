@@ -11,7 +11,7 @@ export default function Question(props) {
           id: index,
           value: answer,
           isChecked: false,
-          isCorrect: false
+          isCorrect: answer === props.correctAnswer
         }
       ))
     }
@@ -81,6 +81,7 @@ export default function Question(props) {
       <div className="answers">
         {answerElements}
       </div>
+      
       <hr/>
     </div>
   )

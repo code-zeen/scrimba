@@ -4,7 +4,7 @@ import Title from './components/title'
 
 export default function App() {
 
-  const [title, setTitle] = React.useState(false)
+  const [title, setTitle] = React.useState(true)
   const [triviaData, setTriviaData] = React.useState([])
 
   React.useEffect(() => {
