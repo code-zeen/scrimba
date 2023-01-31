@@ -5,6 +5,10 @@ export default function QuestionBlock({ question, correctAnswer, incorrectAnswer
 
   const [randomizedAnswers, setRandomizedAnswers] = React.useState(randomizeAnswers())
 
+  React.useEffect(() => {
+    setRandomizedAnswers(randomizeAnswers())
+  }, [question])
+  
   // dangerously setting innter html
   function createMarkup(prop) {
     return {__html: prop};
@@ -16,7 +20,6 @@ export default function QuestionBlock({ question, correctAnswer, incorrectAnswer
 
   function randomizeAnswers() {
     const answersArray = [...incorrectAnswers]
-
     if (answersArray.length === 3) {
       answersArray.splice(randNum(), 0, correctAnswer)
     } else if (correctAnswer === "True") {

@@ -8,6 +8,7 @@ export default function App() {
   const [triviaData, setTriviaData] = React.useState([])
   const [isChecked, setIsChecked] = React.useState(false)
   const [score, setScore] = React.useState(0)
+  const [numOfResets, setNumOfResets] = React.useState(0)
 
   React.useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5")
@@ -17,7 +18,8 @@ export default function App() {
         selectedAnswer: ""
       })))
       .then(formattedData => setTriviaData(formattedData))
-  }, [])
+      console.log(triviaData)
+  }, [numOfResets])
 
 
   function startQuiz() {
@@ -42,14 +44,19 @@ export default function App() {
   }
 
   function checkAnswers() {
-    setIsChecked(prev => !prev)
     console.log(isChecked)
-    triviaData.map(datum => {
-      datum.selectedAnswer === datum.correct_answer ? 
-        setScore(prev => prev + 1) : ""
-    })
+    if (!isChecked) {
+      triviaData.map(datum => {
+        datum.selectedAnswer === datum.correct_answer ? 
+          setScore(prev => prev + 1) : ""
+      })
+    } else {
+      setNumOfResets(prev => prev + 1)
+    }
+    
+    setIsChecked(prev => !prev)
   }
-  console.log(score)
+  console.log(triviaData)
 
   const questionElements = triviaData.map((datum, index) => {
 
