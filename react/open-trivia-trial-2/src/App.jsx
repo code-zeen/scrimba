@@ -18,7 +18,7 @@ export default function App() {
         selectedAnswer: ""
       })))
       .then(formattedData => setTriviaData(formattedData))
-      console.log(triviaData)
+      setScore(0)
   }, [numOfResets])
 
 
