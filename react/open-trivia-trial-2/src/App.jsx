@@ -2,6 +2,7 @@ import React from "react"
 import BtnCheck from "./components/btn-check"
 import QuestionBlock from "./components/question-block"
 import Title from "./components/title"
+import Loading from "./components/loading"
 
 export default function App() {
   const [titleOn, setTitleOn] = React.useState(true)
@@ -9,6 +10,7 @@ export default function App() {
   const [isChecked, setIsChecked] = React.useState(false)
   const [score, setScore] = React.useState(0)
   const [numOfResets, setNumOfResets] = React.useState(0)
+  const [loading, setLoading] = React.useState(true)
 
   React.useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5")
@@ -19,6 +21,7 @@ export default function App() {
       })))
       .then(formattedData => setTriviaData(formattedData))
       setScore(0)
+      setTimeout(() => setLoading(false), 900)
   }, [numOfResets])
 
 
@@ -52,6 +55,7 @@ export default function App() {
       })
     } else {
       setNumOfResets(prev => prev + 1)
+      setLoading(true)
     }
     
     setIsChecked(prev => !prev)
@@ -59,7 +63,6 @@ export default function App() {
   console.log(triviaData)
 
   const questionElements = triviaData.map((datum, index) => {
-
     return (
       <QuestionBlock
         key={index}
@@ -73,15 +76,28 @@ export default function App() {
     )
   })
 
+  function quizInterface() {
+    return (
+      <>
+        <h1 className="title">Quizzical</h1>
+        {questionElements}
+        <div className="check-button">
+          {isChecked && <h3>You scored {score}/5 correct answers</h3>}
+          <BtnCheck handleClick={checkAnswers} isChecked={isChecked}/>
+        </div>
+      </>
+    )
+  }
+
   return (
     <main>
-      {titleOn && <Title handleClick={startQuiz}/>}
-      {!titleOn && <h1 className="title">Quizzical</h1>}
-      {!titleOn && questionElements}
-      {!titleOn && <div className="check-button">
-        {isChecked && <h3>You scored {score}/5 correct answers</h3>}
-        <BtnCheck handleClick={checkAnswers} isChecked={isChecked}/>
-      </div>}
+      {loading ? (<Loading/>
+      ) : (
+        titleOn ? (<Title handleClick={startQuiz}/>
+        ) : (
+          quizInterface()
+        )
+      )}
     </main>
   )
 }
