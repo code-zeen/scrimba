@@ -13,13 +13,20 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+* {
+  box-sizing: border-box;
+}
 
 body {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  align-items: center;
+  margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url(./assets/blolb1.png), url(./assets/blolb2.png);
+  background-repeat: no-repeat;
+  background-position: right top, left bottom;
 }
 main {
   display: flex;
@@ -27,7 +34,7 @@ main {
   max-width: 680px;
 }
 .title-page {
-  margin-top: 200px;
+  align-self: center;
   text-align: center;
 }
 .title {
@@ -134,4 +141,75 @@ input[type="radio"]:checked+label {
   padding: 18px 40px;
   border-radius: 14px;
   border: none;
+}
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-screen .dots {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  animation-name: spin;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.loading-screen .dots span {
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #5b5dd8;
+}
+.loading-screen span:nth-of-type(1) {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.loading-screen span:nth-of-type(2) {
+  left: 80%;
+  top: 20%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.loading-screen span:nth-of-type(3) {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.loading-screen span:nth-of-type(4) {
+  left: 80%;
+  top: 80%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.loading-screen span:nth-of-type(5) {
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+.loading-screen span:nth-of-type(6) {
+  left: 20%;
+  top: 80%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.loading-screen span:nth-of-type(7) {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.loading-screen span:nth-of-type(8) {
+  left: 20%;
+  top: 20%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
