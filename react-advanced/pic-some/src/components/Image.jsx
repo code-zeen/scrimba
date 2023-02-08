@@ -6,7 +6,7 @@ import { Context } from "../Context"
 
 function Image(props) {
   const [isHovered, setIsHovered] = useState(false)
-  const {allPhotos, toggleFavorite, cartItems, addToCart} = useContext(Context)
+  const {toggleFavorite, cartItems, addToCart, removeFromCart} = useContext(Context)
 
   function heartIcon() {
     if (props.img.isFavorite) {
@@ -19,12 +19,11 @@ function Image(props) {
   function plusIcon() {
     const isInCart = cartItems.some(item => item.id === props.img.id)
     if (isInCart) {
-      return <i className="ri-shopping-cart-fill cart"></i>
+      return <i className="ri-shopping-cart-fill cart" onClick={() => removeFromCart(props.img)}></i>
     } else if (isHovered) {
       return <i className="ri-add-circle-line cart" onClick={() => addToCart(props.img)}></i>
     }
   } 
-  
   return (
     <div 
       className={`${props.className} image-container`}
