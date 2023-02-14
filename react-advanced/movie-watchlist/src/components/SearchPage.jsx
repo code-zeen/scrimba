@@ -22,19 +22,22 @@ function SearchPage() {
           console.log(data.Error)
           setErrorMessage(data.Error)
         } else {
-
-          data.Search.map(movie => {
-            fetch(`http://www.omdbapi.com/?apikey=aa0556e0&i=${movie.imdbID}`)
-              .then(res => res.json())
-              .then(data => {
-                setSearchResult(prev => [
-                  ...prev,
-                  data
-                ])
-              })
-          })
+          getMovieById(data)
         }
       })
+  }
+
+  function getMovieById(moviesData) {
+    moviesData.Search.map(movie => {
+      fetch(`http://www.omdbapi.com/?apikey=aa0556e0&i=${movie.imdbID}`)
+        .then(res => res.json())
+        .then(data => {
+          setSearchResult(prev => [
+            ...prev,
+            data
+          ])
+        })
+    })
   }
 
   function addToWatchlist(movie) {
@@ -44,6 +47,10 @@ function SearchPage() {
       movie
     ])
     console.log(myWatchlist)
+  }
+
+  function removeFromWatchlist(movie) {
+    setMyWatchlist(prev => prev.filter(myMovie => myMovie.imdbID !== movie.imdbID))
   }
 
   function defaultEmptyResult() {
@@ -60,6 +67,7 @@ function SearchPage() {
         key={i}
         result={result}
         addToWatchlist={addToWatchlist}
+        removeFromWatchlist={removeFromWatchlist}
         myWatchlist={myWatchlist}
       />
     )

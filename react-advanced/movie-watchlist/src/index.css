@@ -130,11 +130,13 @@ main {
 .movie-detail .title button {
   background: none;
   border: none;
-  padding: 4px;
 }
-.movie-detail .title button i {
-  font-size: 18px;
+.movie-detail .title button {
+  font-size: 20px;
   color: #6b7280;
+}
+.movie-detail .title button:hover {
+  color: indianred;
 }
 .movie-detail .title .fa-bookmark {
   color: indianred;
