@@ -1,6 +1,16 @@
 import React from "react"
 
-function MovieBlock({result, addToWatchlist}) {
+function MovieBlock({result, addToWatchlist, myWatchlist}) {
+
+  function renderBookmarkBtn() {
+    const isInWatchlist = myWatchlist.some(movie => movie.imdbID === result.imdbID)
+    if (isInWatchlist) {
+      return <i className="fa fa-bookmark"></i>
+    } else {
+      return <i className="fa fa-bookmark-o"></i>
+    }
+  }
+
 
   return (
     <div className="movie-block">
@@ -15,7 +25,7 @@ function MovieBlock({result, addToWatchlist}) {
               className="add-to-list"
               onClick={() => addToWatchlist(result)}
             >
-                <i className="fa fa-bookmark-o"></i>
+                {renderBookmarkBtn()}
             </button>
           </div>
           <div className="detail">

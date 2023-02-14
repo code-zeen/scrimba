@@ -58,8 +58,9 @@ function SearchPage() {
     return (
       <MovieBlock
         key={i}
-        addToWatchlist={addToWatchlist}
         result={result}
+        addToWatchlist={addToWatchlist}
+        myWatchlist={myWatchlist}
       />
     )
   })
