@@ -18,11 +18,15 @@ function MovieBlock({result, onIcon, offIcon}) {
     }
   }
 
+  function imgUrl() {
+    return result.Poster === "N/A" ? "https://via.placeholder.com/100x150.png?text=Image N/A" : result.Poster
+  }
+  
   return (
     <div className="movie-block">
       <div className="movie">
         <div className="image">
-          <img src={result.Poster} alt={result.Title} />
+          <img src={imgUrl()} alt={result.Title} />
         </div>
         <div className="movie-detail">
           <div className="title">
