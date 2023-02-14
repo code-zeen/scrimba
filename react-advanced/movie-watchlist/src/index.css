@@ -10,12 +10,18 @@ button {
 body {
   background: #333;
 }
+a {
+  text-decoration: none;
+}
+
 main {
   width: 550px;
+  min-height: 80vh;
   margin: auto;
   background: #fff;
 }
 
+/* Header jsx */
 .header {
   display: flex;
   flex-direction: column;
@@ -27,32 +33,28 @@ main {
   background-position-y: 25%;
   background-blend-mode: multiply;
 }
-.header .links {
+.header .text {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 550px;
+  width: 100%;
+  padding: 42px;
 }
-.header .links h2 {
+.header .text h2 {
   font-size: 42px;
   font-weight: 900;
   color: white;
 }
-.header .links button {
-  background: none;
-  border: none;
+.header .text span {
   color: white;
+  font-size: 14px;
   font-weight: 700;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* Search bar */
 .search {
   position: relative;
-  transform: translateY(-20px);
+  transform: translateY(76px);
 }
 .search .fa-search {
   position: absolute;
@@ -81,16 +83,28 @@ main {
   border: 1px solid #d1d5db;
   border-radius: 0 6px 6px 0;
 }
-.content .movies {
+
+
+.content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+}
+
+/* default Empty Result */
+.movies {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
-.content .movies .fa-film {
+.movies .fa-film {
   font-size: 70px;
   color: #dfdddd;
 }
-.content .movies p {
+.movies p {
   font-weight: 700;
   font-size: 18px;
   color: #dfdddd;
@@ -103,7 +117,7 @@ main {
 .movie {
   display: flex;
   gap: 20px;
-  padding: 44px 0;
+  padding: 36px 0;
   border-bottom: 1px solid #e5e7eb;
 }
 .movie .image {

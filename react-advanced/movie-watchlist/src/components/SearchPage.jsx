@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+
+import Header from "./Header"
 import MovieBlock from "./MovieBlock"
 
 function SearchPage() {
@@ -61,6 +63,7 @@ function SearchPage() {
       </div>
     )
   }
+
   const searchResultElements = searchResult.map((result, i) => {
     return (
       <MovieBlock
@@ -73,30 +76,26 @@ function SearchPage() {
     )
   })
 
-
   return (
     <div>
-      <header className="header">
-        <div className="links">
-          <h2>Find your film</h2>
-          <button>My Watchlist</button>
-        </div>
-      </header>
-      <div className="content">
-        <div className="search">
+      <Header title="Find your film" text="My Watchlist" link="/mypage"/>
+      <div className="search">
           <i className="fa fa-search"></i>
           <form>
             <input 
               type="text" 
+              id="search-bar"
               placeholder="Search for a movie"
               onChange={handleChange}
               value={searchInput}
+              autoFocus
             />
             <button onClick={search}>Search</button>
           </form>
         </div>
+      <div className="content">
+        {searchResult.length === 0 ? defaultEmptyResult() : searchResultElements}
       </div>
-      {searchResultElements}
     </div>
   )
 }
