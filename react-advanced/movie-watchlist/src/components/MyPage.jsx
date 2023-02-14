@@ -9,7 +9,6 @@ function MyPage() {
   // Global context
   const {
     myWatchlist,
-    setMyWatchlist,
     addToWatchlist,
     removeFromWatchlist
   } = useContext(Context)

@@ -7,10 +7,6 @@ import MovieBlock from "./MovieBlock"
 function SearchPage() {
   // Global context
   const {
-      myWatchlist,
-      setMyWatchlist,
-      addToWatchlist,
-      removeFromWatchlist,
       searchInput,
       setSearchInput,
       searchResult,
@@ -41,8 +37,8 @@ function SearchPage() {
         } else {
           getMovieById(data)
         }
+        setIsLoading(false)
       })
-    setTimeout(() => setIsLoading(false), 900)
   }
 
   function getMovieById(moviesData) {
@@ -98,7 +94,7 @@ function SearchPage() {
     )
   }
 
-  // Content render logic REVISIT!!!
+  // Content render logic
   function renderContent() {
     if (isLoading) {
       return loadingSearch()

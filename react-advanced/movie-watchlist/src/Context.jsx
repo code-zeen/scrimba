@@ -1,13 +1,20 @@
-import React, { useState} from "react"
+import React, { useState, useEffect } from "react"
 
 const Context = React.createContext()
 
 function ContextProvider(props) {
-  const [myWatchlist, setMyWatchlist] = useState([])
+  const storedWatchlist = JSON.parse(sessionStorage.getItem("myWatchlist"))
+  const [myWatchlist, setMyWatchlist] = useState(storedWatchlist ? storedWatchlist : [])
   const [searchInput, setSearchInput] = useState("")
   const [searchResult, setSearchResult] = useState([])
   const [errorMessage, setErrorMessage] = useState("")
+  const [darkTheme, setDarkTheme] = useState(true)
 
+  // Update session storage
+  useEffect(() => {
+    sessionStorage.setItem("myWatchlist", JSON.stringify(myWatchlist))
+  }, [myWatchlist])
+  
   // Add & Remove movies
   function addToWatchlist(movie) {
     setMyWatchlist(prev => [...prev, movie])
@@ -27,7 +34,9 @@ function ContextProvider(props) {
       searchResult,
       setSearchResult,
       errorMessage,
-      setErrorMessage
+      setErrorMessage,
+      darkTheme,
+      setDarkTheme
     }}>
       {props.children}
     </Context.Provider>

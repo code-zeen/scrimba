@@ -112,11 +112,11 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 120px;
+  color: #dfdddd;
 }
 .empty .default {
   font-size: 70px;
-  color: #dfdddd;
 }
 .empty .default.fa-spinner {
   animation-name: spin;
@@ -135,7 +135,6 @@ main {
 .empty p {
   font-weight: 700;
   font-size: 18px;
-  color: #dfdddd;
 }
 .empty .link {
   color: #363636;
@@ -152,14 +151,18 @@ main {
 /* Search Result jsx */
 .movie-block {
   padding: 0 44px;
+  width: 100%;
 }
 .movie {
   display: flex;
+  width: 100%;
   gap: 20px;
   padding: 36px 0;
   border-bottom: 1px solid #e5e7eb;
 }
 .movie .image {
+  max-width: 100px;
+  min-width: 100px;
   position: relative;
 }
 .movie img {
@@ -171,6 +174,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 .movie-detail .title {
   display: flex;
@@ -221,4 +225,47 @@ main {
   color: #6b7280;
   font-size: 14px;
   line-height: 20px;
+}
+
+
+/* Dark Theme */
+main.dark-theme {
+  background: #121212;
+}
+main.dark-theme .empty {
+  color: #2e2e2f;
+}
+main.dark-theme .empty .link {
+  color: #fff;
+}
+main.dark-theme .empty .link:hover {
+  color: cornflowerblue;
+}
+main.dark-theme .search .fa-search {
+  color: #9ca3af;
+}
+main.dark-theme .search input {
+  color: #a5a5a5;
+  background: #2e2e2f;
+  border: none;
+}
+main.dark-theme .search button {
+  color: #fff;
+  background: #4b4b4b;
+  border: none;
+}
+main.dark-theme .movie {
+  border-bottom: 1px solid #2c2c2c;
+}
+
+main.dark-theme .movie-detail {
+  color: #fff;
+}
+
+main.dark-theme .detail {
+  color: #fff;
+}
+
+main.dark-theme .synopsis {
+  color: #a5a5a5;
 }

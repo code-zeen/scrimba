@@ -5,7 +5,6 @@ import { Context } from "../Context"
 function MovieBlock({result, onIcon, offIcon}) {
   const {
     myWatchlist,
-    setMyWatchlist,
     addToWatchlist,
     removeFromWatchlist
   } = useContext(Context)
