@@ -3,13 +3,13 @@ import React, { useContext } from "react"
 import { Context } from "../Context"
 
 function MovieBlock({result, onIcon, offIcon}) {
-  console.log(onIcon)
   const {
     myWatchlist,
     setMyWatchlist,
     addToWatchlist,
     removeFromWatchlist
   } = useContext(Context)
+  
   function renderBookmarkBtn() {
     const isInWatchlist = myWatchlist.some(movie => movie.imdbID === result.imdbID)
     if (isInWatchlist) {

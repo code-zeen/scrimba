@@ -112,6 +112,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 80px;
 }
 .movies .fa-film {
   font-size: 70px;

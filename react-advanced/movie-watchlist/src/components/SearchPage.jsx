@@ -76,12 +76,12 @@ function SearchPage() {
     )
   }
 
-  // Mini-component: Initial page
+  // Mini-component: Initial & Error UI
   function defaultEmptyResult() {
     return (
       <div className="movies">
         <i className="fa fa-film"></i>
-        <p>Start Exploring</p>
+        <p>{errorMessage? errorMessage : "Start Exploring"}</p>
       </div>
     )
   }
