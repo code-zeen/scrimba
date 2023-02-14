@@ -19,6 +19,8 @@ function SearchPage() {
       setErrorMessage
     } = useContext(Context)
 
+  const [isLoading, setIsLoading] = useState(false)
+
   // Controlled input component
   function handleChange(event) {
     const {value} = event.target
@@ -28,6 +30,7 @@ function SearchPage() {
   // Call API on assigned btn click
   function search(e) {
     e.preventDefault()
+    setIsLoading(true)
     setSearchResult([])
     fetch(`https://www.omdbapi.com/?apikey=aa0556e0&s=${searchInput}`)
       .then(res => res.json())
@@ -39,6 +42,7 @@ function SearchPage() {
           getMovieById(data)
         }
       })
+    setTimeout(() => setIsLoading(false), 900)
   }
 
   function getMovieById(moviesData) {
@@ -85,6 +89,25 @@ function SearchPage() {
       </div>
     )
   }
+  function loadingSearch() {
+    return (
+      <div className="empty">
+        <i className="default fa fa-spinner"></i>
+        <p>Searching...</p>
+      </div>
+    )
+  }
+
+  // Content render logic REVISIT!!!
+  function renderContent() {
+    if (isLoading) {
+      return loadingSearch()
+    } else if (searchResult.length > 0){
+      return searchResultElements
+    } else {
+      return defaultEmptyResult()
+    }
+  }
 
   // Search results
   const searchResultElements = searchResult.map((result, i) => {
@@ -107,7 +130,7 @@ function SearchPage() {
       />
       {searchBar()}
       <div className="content">
-        {searchResult.length === 0 ? defaultEmptyResult() : searchResultElements}
+        {renderContent()}
       </div>
     </div>
   )

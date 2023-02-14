@@ -106,7 +106,7 @@ main {
   margin-top: 20px;
 }
 
-/* default Empty Result */
+/* Empty Results */
 .empty {
   display: flex;
   flex-direction: column;
@@ -117,6 +117,20 @@ main {
 .empty .default {
   font-size: 70px;
   color: #dfdddd;
+}
+.empty .default.fa-spinner {
+  animation-name: spin;
+  animation-duration: .8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(8);
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .empty p {
   font-weight: 700;
