@@ -15,7 +15,7 @@ function MovieBlock({result, addToWatchlist}) {
               className="add-to-list"
               onClick={() => addToWatchlist(result)}
             >
-                <i class="fa fa-bookmark-o"></i>
+                <i className="fa fa-bookmark-o"></i>
             </button>
           </div>
           <div className="detail">

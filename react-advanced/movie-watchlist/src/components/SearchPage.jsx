@@ -12,7 +12,8 @@ function SearchPage() {
     setSearchInput(value)
   }
 
-  function search() {
+  function search(e) {
+    e.preventDefault()
     setSearchResult([])
     fetch(`http://www.omdbapi.com/?apikey=aa0556e0&s=${searchInput}`)
       .then(res => res.json())
@@ -35,8 +36,6 @@ function SearchPage() {
         }
       })
   }
-
-  console.log(searchResult)
 
   function addToWatchlist(movie) {
     console.log("clicked")
@@ -77,13 +76,15 @@ function SearchPage() {
       <div className="content">
         <div className="search">
           <i className="fa fa-search"></i>
-          <input 
-            type="text" 
-            placeholder="Search for a movie"
-            onChange={handleChange}
-            value={searchInput}
-          />
-          <button onClick={search}>Search</button>
+          <form>
+            <input 
+              type="text" 
+              placeholder="Search for a movie"
+              onChange={handleChange}
+              value={searchInput}
+            />
+            <button onClick={search}>Search</button>
+          </form>
         </div>
       </div>
       {searchResultElements}
