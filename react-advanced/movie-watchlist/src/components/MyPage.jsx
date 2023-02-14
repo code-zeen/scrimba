@@ -21,14 +21,17 @@ function MyPage() {
         addToWatchlist={addToWatchlist}
         removeFromWatchlist={removeFromWatchlist}
         myWatchlist={myWatchlist}
+        onIcon="fa-trash-o"
       />
     )
   })
 
   return (
-    <div>
+    <div className="my-page">
       <Header title="My Watchlist" text="Search for movies" link="/" />
-      {myWatchlistElements}
+      <div className="content">
+        {myWatchlistElements}
+      </div>
     </div>
   )
 }

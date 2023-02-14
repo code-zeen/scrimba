@@ -4,6 +4,9 @@ const Context = React.createContext()
 
 function ContextProvider(props) {
   const [myWatchlist, setMyWatchlist] = useState([])
+  const [searchInput, setSearchInput] = useState("")
+  const [searchResult, setSearchResult] = useState([])
+  const [errorMessage, setErrorMessage] = useState("")
 
   // Add & Remove movies
   function addToWatchlist(movie) {
@@ -18,7 +21,13 @@ function ContextProvider(props) {
       myWatchlist,
       setMyWatchlist,
       addToWatchlist,
-      removeFromWatchlist
+      removeFromWatchlist,
+      searchInput,
+      setSearchInput,
+      searchResult,
+      setSearchResult,
+      errorMessage,
+      setErrorMessage
     }}>
       {props.children}
     </Context.Provider>

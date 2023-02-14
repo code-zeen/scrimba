@@ -1,13 +1,21 @@
-import React from "react"
+import React, { useContext } from "react"
 
-function MovieBlock({result, addToWatchlist, removeFromWatchlist, myWatchlist}) {
+import { Context } from "../Context"
 
+function MovieBlock({result, onIcon, offIcon}) {
+  console.log(onIcon)
+  const {
+    myWatchlist,
+    setMyWatchlist,
+    addToWatchlist,
+    removeFromWatchlist
+  } = useContext(Context)
   function renderBookmarkBtn() {
     const isInWatchlist = myWatchlist.some(movie => movie.imdbID === result.imdbID)
     if (isInWatchlist) {
-      return <i className="fa fa-bookmark" onClick={() => removeFromWatchlist(result)}></i>
+      return <i className={`fa ${onIcon}`} onClick={() => removeFromWatchlist(result)}></i>
     } else {
-      return <i className="fa fa-bookmark-o" onClick={() => addToWatchlist(result)}></i>
+      return <i className={`fa ${offIcon}`} onClick={() => addToWatchlist(result)}></i>
     }
   }
 

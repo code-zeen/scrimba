@@ -4,6 +4,10 @@
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
 }
+html {
+  /* prevent scrollbar from repositioning page */
+  overflow-y: scroll; 
+}
 button {
   cursor: pointer;
 }
@@ -53,8 +57,12 @@ main {
 
 /* Search bar */
 .search {
+  display: flex;
+  justify-content: center;
+  transform: translateY(-18px);
+}
+.search .search-bar {
   position: relative;
-  transform: translateY(76px);
 }
 .search .fa-search {
   position: absolute;
@@ -90,7 +98,12 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 40px;
+}
+.search-page .content {
+  margin-top: -20px;
+}
+.my-page .content {
+  margin-top: 20px;
 }
 
 /* default Empty Result */

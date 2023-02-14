@@ -10,13 +10,14 @@ function SearchPage() {
       myWatchlist,
       setMyWatchlist,
       addToWatchlist,
-      removeFromWatchlist
+      removeFromWatchlist,
+      searchInput,
+      setSearchInput,
+      searchResult,
+      setSearchResult,
+      errorMessage,
+      setErrorMessage
     } = useContext(Context)
-
-  // Local states
-  const [searchInput, setSearchInput] = useState("")
-  const [searchResult, setSearchResult] = useState([])
-  const [errorMessage, setErrorMessage] = useState("")
 
   // Controlled input component
   function handleChange(event) {
@@ -57,18 +58,20 @@ function SearchPage() {
   function searchBar() {
     return (
       <div className="search">
-        <i className="fa fa-search"></i>
-        <form>
-          <input 
-            type="text" 
-            id="search-bar"
-            placeholder="Search for a movie"
-            onChange={handleChange}
-            value={searchInput}
-            autoFocus
-          />
-          <button onClick={search}>Search</button>
-        </form>
+        <div className="search-bar">
+          <i className="fa fa-search"></i>
+          <form>
+            <input 
+              type="text" 
+              id="search-bar"
+              placeholder="Search for a movie"
+              onChange={handleChange}
+              value={searchInput}
+              autoFocus
+            />
+            <button onClick={search}>Search</button>
+          </form>
+        </div>
       </div>
     )
   }
@@ -89,16 +92,19 @@ function SearchPage() {
       <MovieBlock
         key={i}
         result={result}
-        addToWatchlist={addToWatchlist}
-        removeFromWatchlist={removeFromWatchlist}
-        myWatchlist={myWatchlist}
+        onIcon="fa-bookmark"
+        offIcon="fa-bookmark-o"
       />
     )
   })
 
   return (
-    <div>
-      <Header title="Find your film" text="My Watchlist" link="/mypage"/>
+    <div  className="search-page">
+      <Header 
+        title="Find your film" 
+        text="My Watchlist" 
+        link="/mypage"
+      />
       {searchBar()}
       <div className="content">
         {searchResult.length === 0 ? defaultEmptyResult() : searchResultElements}
