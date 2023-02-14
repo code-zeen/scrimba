@@ -7,7 +7,9 @@ function Header(props) {
     <header className="header">
       <div className="text">
         <h2>{props.title}</h2>
-        <Link to={props.link}><span>{props.text}</span></Link>
+        <Link to={props.link} className="link">
+          <span>{props.text}</span>
+        </Link>
       </div>
     </header>
   )
