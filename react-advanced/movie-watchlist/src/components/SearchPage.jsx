@@ -1,19 +1,30 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 
+import { Context } from "../Context"
 import Header from "./Header"
 import MovieBlock from "./MovieBlock"
 
 function SearchPage() {
+  // Global context
+  const {
+      myWatchlist,
+      setMyWatchlist,
+      addToWatchlist,
+      removeFromWatchlist
+    } = useContext(Context)
+
+  // Local states
   const [searchInput, setSearchInput] = useState("")
   const [searchResult, setSearchResult] = useState([])
   const [errorMessage, setErrorMessage] = useState("")
-  const [myWatchlist, setMyWatchlist] = useState([])
 
+  // Controlled input component
   function handleChange(event) {
     const {value} = event.target
     setSearchInput(value)
   }
 
+  // Call API on assigned btn click
   function search(e) {
     e.preventDefault()
     setSearchResult([])
@@ -42,19 +53,27 @@ function SearchPage() {
     })
   }
 
-  function addToWatchlist(movie) {
-    console.log("clicked")
-    setMyWatchlist(prev => [
-      ...prev,
-      movie
-    ])
-    console.log(myWatchlist)
+  // Mini-component: Search bar
+  function searchBar() {
+    return (
+      <div className="search">
+        <i className="fa fa-search"></i>
+        <form>
+          <input 
+            type="text" 
+            id="search-bar"
+            placeholder="Search for a movie"
+            onChange={handleChange}
+            value={searchInput}
+            autoFocus
+          />
+          <button onClick={search}>Search</button>
+        </form>
+      </div>
+    )
   }
 
-  function removeFromWatchlist(movie) {
-    setMyWatchlist(prev => prev.filter(myMovie => myMovie.imdbID !== movie.imdbID))
-  }
-
+  // Mini-component: Initial page
   function defaultEmptyResult() {
     return (
       <div className="movies">
@@ -64,6 +83,7 @@ function SearchPage() {
     )
   }
 
+  // Search results
   const searchResultElements = searchResult.map((result, i) => {
     return (
       <MovieBlock
@@ -79,20 +99,7 @@ function SearchPage() {
   return (
     <div>
       <Header title="Find your film" text="My Watchlist" link="/mypage"/>
-      <div className="search">
-          <i className="fa fa-search"></i>
-          <form>
-            <input 
-              type="text" 
-              id="search-bar"
-              placeholder="Search for a movie"
-              onChange={handleChange}
-              value={searchInput}
-              autoFocus
-            />
-            <button onClick={search}>Search</button>
-          </form>
-        </div>
+      {searchBar()}
       <div className="content">
         {searchResult.length === 0 ? defaultEmptyResult() : searchResultElements}
       </div>
