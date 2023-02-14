@@ -14,7 +14,7 @@ function ContextProvider(props) {
   useEffect(() => {
     sessionStorage.setItem("myWatchlist", JSON.stringify(myWatchlist))
   }, [myWatchlist])
-  
+
   // Add & Remove movies
   function addToWatchlist(movie) {
     setMyWatchlist(prev => [...prev, movie])

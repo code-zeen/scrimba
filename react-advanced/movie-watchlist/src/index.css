@@ -37,6 +37,18 @@ main {
   background-position-y: 25%;
   background-blend-mode: multiply;
 }
+.header .theme-btn {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.header .theme-btn button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  margin-right: 20px;
+}
 .header .text {
   display: flex;
   justify-content: space-between;
@@ -231,6 +243,9 @@ main {
 /* Dark Theme */
 main.dark-theme {
   background: #121212;
+}
+main.dark-theme .theme-btn i {
+  color: #fff;
 }
 main.dark-theme .empty {
   color: #2e2e2f;
