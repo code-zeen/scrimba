@@ -29,7 +29,7 @@ function SearchPage() {
   function search(e) {
     e.preventDefault()
     setSearchResult([])
-    fetch(`http://www.omdbapi.com/?apikey=aa0556e0&s=${searchInput}`)
+    fetch(`https://www.omdbapi.com/?apikey=aa0556e0&s=${searchInput}`)
       .then(res => res.json())
       .then(data => {
         if (!data.Search) {
@@ -43,7 +43,7 @@ function SearchPage() {
 
   function getMovieById(moviesData) {
     moviesData.Search.map(movie => {
-      fetch(`http://www.omdbapi.com/?apikey=aa0556e0&i=${movie.imdbID}`)
+      fetch(`https://www.omdbapi.com/?apikey=aa0556e0&i=${movie.imdbID}`)
         .then(res => res.json())
         .then(data => {
           setSearchResult(prev => [
