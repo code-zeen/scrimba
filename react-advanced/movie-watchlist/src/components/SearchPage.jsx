@@ -11,6 +11,7 @@ function SearchPage() {
       setSearchInput,
       searchResult,
       setSearchResult,
+      sortByTitle,
       errorMessage,
       setErrorMessage
     } = useContext(Context)
@@ -117,6 +118,10 @@ function SearchPage() {
     )
   })
 
+  function chooseSortType() {
+    sortByTitle(searchResult)
+  }
+  
   return (
     <div  className="search-page">
       <Header 
@@ -126,6 +131,14 @@ function SearchPage() {
       />
       {searchBar()}
       <div className="content">
+        <div className="sort-by">
+          <label htmlFor="sort">Sort by: </label>
+          <select name="sort" id="sort">
+            <option value="Title">Title</option>
+            <option value="Rating">Rating</option>
+            <option value="Bookmarked">Bookmarked</option>
+          </select>
+        </div>
         {renderContent()}
       </div>
     </div>

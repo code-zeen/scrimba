@@ -104,18 +104,24 @@ main {
   border-radius: 0 6px 6px 0;
 }
 
-
+/* Content Box */
 .content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px 44px;
 }
 .search-page .content {
   margin-top: -20px;
 }
 .my-page .content {
   margin-top: 20px;
+}
+.content .sort-by {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 /* Empty Results */
@@ -162,7 +168,6 @@ main {
 
 /* Search Result jsx */
 .movie-block {
-  padding: 0 44px;
   width: 100%;
 }
 .movie {
@@ -242,6 +247,7 @@ main {
 
 /* Dark Theme */
 main.dark-theme {
+  color: #fff;
   background: #121212;
 }
 main.dark-theme .theme-btn i {
@@ -283,4 +289,13 @@ main.dark-theme .detail {
 
 main.dark-theme .synopsis {
   color: #a5a5a5;
+}
+
+/* Responsive */
+@media only screen and (max-width: 767px){
+  main {
+    width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+  }
 }
