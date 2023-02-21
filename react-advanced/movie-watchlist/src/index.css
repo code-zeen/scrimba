@@ -171,8 +171,8 @@ main {
 }
 .movie {
   display: flex;
-  gap: 20px;
-  padding: 36px 0;
+  gap: 1em;
+  padding: 1.75em 0;
   border-bottom: 1px solid #e5e7eb;
 }
 .movie img {
@@ -188,13 +188,14 @@ main {
 }
 .movie-detail .title {
   display: flex;
-  gap: .5em;
+  justify-content: space-between;
 }
 .movie-detail .title h3 {
   font-size: 18px;
   font-weight: 500;
 }
 .movie-detail .title button {
+  align-self: flex-start;
   background: none;
   border: none;
 }
@@ -211,14 +212,13 @@ main {
 
 .movie-detail .detail {
   display: flex;
-  gap: 18px;
-  font-size: 12px;
+  gap: 1em;
+  font-size: .75rem;
   color: #404249;
 }
 .movie-detail .detail .rating {
   display: flex;
-  align-items: center;
-  flex: 1;
+  align-self: flex-start;
   font-size: 14px;
 }
 .movie-detail .detail i {
@@ -233,8 +233,8 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
   color: #6b7280;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: .875rem;
+  line-height: 1.5;
 }
 
 
@@ -271,7 +271,6 @@ main.dark-theme .search button {
 main.dark-theme .movie {
   border-bottom: 1px solid #2c2c2c;
 }
-
 main.dark-theme .movie-detail {
   color: #fff;
 }
@@ -279,7 +278,6 @@ main.dark-theme .movie-detail {
 main.dark-theme .detail {
   color: #fff;
 }
-
 main.dark-theme .synopsis {
   color: #a5a5a5;
 }
