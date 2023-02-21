@@ -126,7 +126,7 @@ function SearchPage() {
     <div  className="search-page">
       <Header 
         title="Find your film" 
-        text="My Watchlist" 
+        text="My List" 
         link="/mypage"
       />
       {searchBar()}
