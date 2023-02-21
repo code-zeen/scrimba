@@ -23,7 +23,7 @@ function MovieBlock({result, onIcon, offIcon}) {
   }
   
   return (
-    <div className="movie-block">
+    <div className="movie-block wrapper">
       <div className="movie">
         <div className="image">
           <img src={imgUrl()} alt={result.Title} />

@@ -59,7 +59,7 @@ function SearchPage() {
   function searchBar() {
     return (
       <div className="search">
-        <div className="search-bar">
+        <div className="search-bar wrapper">
           <i className="fa fa-search"></i>
           <form>
             <input 
@@ -131,7 +131,7 @@ function SearchPage() {
       />
       {searchBar()}
       <div className="content">
-        <div className="sort-by">
+        <div className="sort-by wrapper">
           <label htmlFor="sort">Sort by: </label>
           <select name="sort" id="sort">
             <option value="Title">Title</option>
