@@ -121,6 +121,10 @@ img.image-grid {
   cursor: pointer;
 }
 
+.cart-alert {
+  text-align: center;
+}
+
 .wide {
   grid-column: span 2;
 }

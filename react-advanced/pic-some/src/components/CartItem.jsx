@@ -4,7 +4,7 @@ import { Context } from "../Context"
 import useHover from "../hooks/useHover"
 
 function CartItem(props) {
-  const {isHovered, hoverRef} = useHover()
+  const {isHovered, enter, leave} = useHover()
 
   const {removeFromCart} = useContext(Context)
 
@@ -14,7 +14,8 @@ function CartItem(props) {
       <i 
         className={iconClassName} 
         onClick={() => removeFromCart(props.item)}
-        ref={hoverRef}
+        onMouseEnter={() => enter()}
+        onMouseLeave={() => leave()}
       ></i>
       <img src={props.item.url} width="180px" />
       <p>$5.99</p>

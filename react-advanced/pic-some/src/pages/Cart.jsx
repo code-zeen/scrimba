@@ -34,7 +34,7 @@ function Cart() {
         <div className="order-button">
           <button onClick={() => placeOrder()}>{buttonText}</button>
         </div> :
-        <p>You have no items</p>
+        <p className="cart-alert">You have no items</p>
       }
     </main>
   )

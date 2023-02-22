@@ -6,7 +6,7 @@ import useHover from "../hooks/useHover"
 
 
 function Image(props) {
-  const {isHovered, hoverRef} = useHover()
+  const {isHovered, enter, leave} = useHover()
   const {toggleFavorite, cartItems, addToCart, removeFromCart} = useContext(Context)
 
   function heartIcon() {
@@ -28,7 +28,8 @@ function Image(props) {
   return (
     <div 
       className={`${props.className} image-container`}
-      ref={hoverRef}
+      onMouseEnter={() => enter()}
+      onMouseLeave={() => leave()}
     >
       <img 
         className="image-grid" 

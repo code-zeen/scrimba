@@ -11,17 +11,7 @@ function useHover() {
     setIsHovered(false)
   }
 
-  useEffect(() => {
-    hoverRef.current.addEventListener("mouseenter", enter)
-    hoverRef.current.addEventListener("mouseleave", leave)
-
-    return () => {
-      hoverRef.current.removeEventListener("mouseenter", enter)
-      hoverRef.current.removeEventListener("mouseleave", leave)
-    }
-  }, [])
-
-  return {isHovered, hoverRef}
+  return {isHovered, hoverRef, enter, leave}
 }
 
 export default useHover
