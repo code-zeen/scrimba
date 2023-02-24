@@ -20,8 +20,8 @@ export default function App() {
         selectedAnswer: ""
       })))
       .then(formattedData => setTriviaData(formattedData))
-      setScore(0)
-      setTimeout(() => setLoading(false), 900)
+    setScore(0)
+    setTimeout(() => setLoading(false), 900)
   }, [numOfResets])
 
 
