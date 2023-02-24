@@ -120,6 +120,9 @@ main {
   justify-content: flex-start;
   width: 100%;
 }
+.content label {
+  margin-right: 1em;
+}
 
 /* Empty Results */
 .empty {

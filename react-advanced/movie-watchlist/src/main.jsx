@@ -6,6 +6,7 @@ import App from "./App"
 import { ContextProvider } from "./Context"
 import "./index.css"
 import "./responsive.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
