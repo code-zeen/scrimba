@@ -119,8 +119,22 @@ function SearchPage() {
   })
 
   function chooseSortType() {
-    sortByTitle(searchResult)
-    console.log(searchResult)
+    const filterValue = document.getElementById("sort").value
+    switch(filterValue) {
+      case "Title":
+        sortByTitle(searchResult)
+        console.log(filterValue)
+        break;
+      case "Rating":
+        console.log(filterValue)
+        break;
+      case "Bookmarked":
+        console.log(filterValue)
+        break;
+      default:
+        break;
+    }
+
   }
 
 
@@ -135,7 +149,7 @@ function SearchPage() {
       <div className="content">
         <div className="sort-by wrapper">
           <label htmlFor="sort">Sort by: </label>
-          <select name="sort" id="sort">
+          <select name="sort" id="sort" onChange={() => chooseSortType()}>
             <option value="Title">Title</option>
             <option value="Rating">Rating</option>
             <option value="Bookmarked">Bookmarked</option>
