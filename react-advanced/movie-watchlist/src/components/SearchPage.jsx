@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react"
-import "bootstrap"
 
 import { Context } from "../Context"
 import Header from "./Header"
@@ -121,8 +120,10 @@ function SearchPage() {
 
   function chooseSortType() {
     sortByTitle(searchResult)
+    console.log(searchResult)
   }
-  
+
+
   return (
     <div  className="search-page">
       <Header 
@@ -134,7 +135,7 @@ function SearchPage() {
       <div className="content">
         <div className="sort-by wrapper">
           <label htmlFor="sort">Sort by: </label>
-          <select name="sort" id="sort" className="form-select">
+          <select name="sort" id="sort">
             <option value="Title">Title</option>
             <option value="Rating">Rating</option>
             <option value="Bookmarked">Bookmarked</option>
